@@ -1,22 +1,19 @@
+import time
+import re
+from maya import cmds
+import maya.api.OpenMaya as om
 import maya.app.renderSetup.model.override as override
 import maya.app.renderSetup.model.selector as selector
 import maya.app.renderSetup.model.collection as collection
 import maya.app.renderSetup.model.renderLayer as renderLayer
 import maya.app.renderSetup.model.renderSetup as renderSetup
 import maya.app.renderSetup.model.utils as utils
-import maya.api.OpenMaya as om
-from maya import cmds
-import time
-import re
-
-
 
 def getSelection():
     cmds.select(hierarchy = True)
     activelayer = cmds.ls(sl = True, typ='shape', long=True)
-    
-    return activelayer;
 
+    return activelayer;
 
 def getInvertSelection(selection):
     allObj = cmds.ls(typ='shape', long=True)
@@ -31,7 +28,6 @@ def getInvertSelection(selection):
 
     return invertShapes;
 
-
 def isRSLight(shapename):
     check = 1;
     try:
@@ -43,7 +39,9 @@ def isRSLight(shapename):
 
 def getShapeName(longName):
     spliti = longName.split('|');
-    return spliti[len(spliti)-1];
+    result = spliti[len(spliti)-1];
+
+    return result;
 
 def getLongName(shortList):
     lightsAll = getAllRSLights('long');
@@ -80,16 +78,16 @@ def getRSLights(type_name,formats):
             lightsTypeRS.append(i);
             
     return lightsTypeRS;
-    
+
 def makeLLink(obj,lights):
     cmds.lightlink(make = True, light=lights, object=obj );
-    
+
 def breakLLink(obj,lights):
     cmds.lightlink( b=True, light=lights, object=obj );
 
 def makeSLink(obj,lights):
     cmds.lightlink(make = True, shadow = True, light=lights, object=obj );
-    
+
 def breakSLink(obj,lights):
     cmds.lightlink( b=True, shadow = True, light=lights, object=obj );
 
@@ -103,7 +101,7 @@ def exceptList(list, exclude_list):
         if chk == 0:
             exclude_list_result.append(i);
 
-    eturn exclude_list_result;
+    return exclude_list_result;
 
 def addCharsLink():
     sel = getSelection();
