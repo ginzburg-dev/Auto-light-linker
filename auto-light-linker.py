@@ -1,6 +1,6 @@
 ####################################################################
 #
-# Copyright (c) 2023, Dmitrii David Ginzburg.  All Rights Reserved.
+# Copyright (c) 2023, Dmitri Ginzburg.  All Rights Reserved.
 #
 ####################################################################
 
