@@ -18,7 +18,6 @@ import maya.app.renderSetup.model.utils as utils
 def getSelection():
     cmds.select(hierarchy = True)
     activelayer = cmds.ls(sl = True, typ='shape', long=True)
-
     return activelayer;
 
 def getInvertSelection(selection):
@@ -31,7 +30,6 @@ def getInvertSelection(selection):
                 chk = 1;
         if chk == 0:
         invertShapes.append(i);
-
     return invertShapes;
 
 def isRSLight(shapename):
@@ -40,13 +38,11 @@ def isRSLight(shapename):
         cmds.getAttr(shapename+'.exposure');
     except:
         check = 0;
-
     return check;
 
 def getShapeName(longName):
     spliti = longName.split('|');
     result = spliti[len(spliti)-1];
-
     return result;
 
 def getLongName(shortList):
@@ -56,7 +52,6 @@ def getLongName(shortList):
         for k in lightsAll:
             if i == getShapeName(k):
                 list_result.append(k);
-
     return list_result;
 
 def getAllRSLights(formats):
@@ -73,7 +68,6 @@ def getAllRSLights(formats):
     for y in sel:
         if isRSLight(y) == 1:
             lightsRS.append(y);
-
     return lightsRS;
 
 def getRSLights(type_name,formats):
@@ -81,8 +75,7 @@ def getRSLights(type_name,formats):
     lightsAll = getAllRSLights(formats);
     for i in lightsAll:
         if len(i.split(type_name))>1:
-            lightsTypeRS.append(i);
-            
+            lightsTypeRS.append(i);     
     return lightsTypeRS;
 
 def makeLLink(obj,lights):
@@ -106,7 +99,6 @@ def exceptList(list, exclude_list):
                 chk = 1;
         if chk == 0:
             exclude_list_result.append(i);
-
     return exclude_list_result;
 
 def addCharsLink():
