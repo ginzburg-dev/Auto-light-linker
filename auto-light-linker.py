@@ -1,9 +1,3 @@
-####################################################################
-#
-# Copyright (c) 2023, Dmitri Ginzburg.  All Rights Reserved.
-#
-####################################################################
-
 import time
 import re
 from maya import cmds
